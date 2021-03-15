@@ -1,0 +1,10 @@
+.categories {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0px 5px 12px -7px rgba(0, 0, 0, 0.2);
+  padding: 30px 0px;
+}

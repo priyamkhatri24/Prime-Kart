@@ -1,0 +1,22 @@
+.input {
+  background-color: white;
+  border: transparent;
+  outline: none;
+  transition: border 0.2s ease-in;
+  width: 500px;
+  height: 30px;
+  margin: 15px auto;
+  padding: 5px 12px;
+}
+.input:active,
+.input:focus {
+  background-color: white;
+  border: white;
+  outline: none;
+}
+
+@media screen and (max-width: 860px) {
+  .input {
+    width: 70%;
+  }
+}

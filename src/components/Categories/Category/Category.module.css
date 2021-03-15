@@ -1,0 +1,11 @@
+.img {
+  width: 100px;
+  height: auto;
+}
+.catName {
+  margin: 0px auto;
+  font-weight: bold;
+}
+.category {
+  margin: auto 10px;
+}

@@ -1,0 +1,22 @@
+.footer {
+  width: 100%;
+  background-color: rgb(10, 10, 34);
+  color: white;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  /* flex-flow: wrap; */
+}
+.column {
+  text-align: center;
+  width: 50%;
+  margin: auto 10px;
+}
+.icons ion-icon {
+  font-size: 25px;
+  color: white;
+  margin: auto 15px;
+}
+.icons ion-icon:hover {
+  color: #aaa;
+}
