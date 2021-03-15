@@ -29,12 +29,13 @@ class Header extends Component {
     const imageStyle = {
       display: "flex",
       width: "100%",
+      height: "280px",
       transform: `translateX(${-100 * this.state.sliderPage}%)`,
       transition: "transform 0.3s ease-out",
     };
 
     const images = this.state.headers.map((ele) => {
-      return <img style={imageStyle} src={ele} alt="HEADER"></img>;
+      return <img key={ele} style={imageStyle} src={ele} alt="HEADER"></img>;
     });
     return (
       <div className={classes.header}>
