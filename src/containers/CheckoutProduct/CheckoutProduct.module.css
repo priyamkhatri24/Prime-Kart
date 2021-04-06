@@ -1,0 +1,83 @@
+.checkoutProduct {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  min-height: 530px;
+}
+.img {
+  width: 450px;
+  height: auto;
+  margin: 30px;
+}
+.leftColumn {
+  width: 50%;
+}
+.rightColumn {
+  width: 50%;
+  text-align: left;
+}
+.btns {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  margin: 10px auto;
+  margin-bottom: 30px;
+}
+.btn {
+  width: 45%;
+  font-size: 16px;
+  font-weight: bold;
+  height: 60px;
+  color: white;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+.cart {
+  background-color: orangered;
+}
+.flash {
+  background-color: orange;
+}
+.btn ion-icon {
+  font-size: 22px;
+  margin: 0px 10px;
+}
+.rightColumn h4 {
+  font-size: 25px;
+  margin: 10px auto;
+}
+.category {
+  color: #444;
+  margin: 10px auto;
+  font-size: 18px;
+}
+.specialPrice {
+  font-size: 15px;
+  color: #2874f0;
+  font-weight: 900;
+  margin: 10px auto;
+}
+.prices {
+  display: flex;
+  align-items: center;
+}
+.crossedPrice {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 18px;
+}
+.price {
+  margin: auto 10px auto 0px;
+}
+.off {
+  font-weight: 900;
+  margin-left: 10px;
+  color: #2874f0;
+}
+.description {
+  color: gray;
+}

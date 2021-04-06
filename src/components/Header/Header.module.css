@@ -1,7 +1,7 @@
 .header {
   margin: 20px auto;
   width: 99%;
-  height: fit-content;
+  height: auto;
   overflow: hidden;
 }
 

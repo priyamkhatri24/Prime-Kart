@@ -1,0 +1,65 @@
+.login {
+  display: flex;
+}
+.rightSide {
+  width: 60%;
+  margin-top: 30px;
+}
+.leftSide {
+  width: 40%;
+  background-color: #2874f0;
+  text-align: left;
+  color: white;
+  line-height: 25px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 30px;
+}
+.leftSide h2,
+.leftSide p {
+  padding: 0px 40px;
+}
+.leftSide p {
+  font-weight: 300;
+}
+.rightSide .grayPara {
+  color: gray;
+  width: 80%;
+  text-align: left;
+  font-size: 12px;
+  margin: 15px auto;
+}
+.img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.loginButton {
+  width: 80%;
+  height: 40px;
+  color: white;
+  background-color: orangered;
+  outline: none;
+  border: none;
+}
+form input {
+  width: 70%;
+  margin: 15px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #2874f0;
+}
+.bottomText {
+  position: relative;
+  bottom: -100px;
+  text-align: center;
+  font-weight: 500;
+  color: #2874f0;
+}

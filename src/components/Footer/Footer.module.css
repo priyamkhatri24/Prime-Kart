@@ -5,6 +5,8 @@
   display: flex;
   flex-grow: 1;
   flex-direction: row;
+  /* position: relative;
+  bottom: 0; */
   /* flex-flow: wrap; */
 }
 .column {

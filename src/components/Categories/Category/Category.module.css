@@ -8,4 +8,8 @@
 }
 .category {
   margin: auto 10px;
+  transition-duration: 0.3s;
+}
+.category:hover {
+  color: #2874f0;
 }

@@ -11,13 +11,14 @@ import img6 from "../../assets/6.png";
 const categories = () => {
   return (
     <div className={classes.categories}>
-      <Category itemName="Electronics" src={img1} />
-      <Category itemName="Women's wear" src={img6} />
-      <Category itemName="Home" src={img2} />
-      <Category itemName="Jewellery" src={img3} />
       <Category itemName="Groceries" src={img4} />
+      <Category itemName="Women's wear" src={img6} />
+      <Category itemName="Jewellery" src={img3} />
       <Category itemName="Mobile Phones" src={img5} />
+
+      <Category itemName="Electronics" src={img1} />
       <Category itemName="Men's wear" src={img6} />
+      <Category itemName="Home" src={img2} />
     </div>
   );
 };
