@@ -11,6 +11,9 @@ const initialState = {
     category: "men clothing",
     image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
   },
+  showLoginModal: false,
+  searchQuery: "",
+  byCategory: [],
 };
 
 const loadProducts = (state, action) => {
@@ -27,12 +30,48 @@ const productClicked = (state, action) => {
   };
 };
 
+const loginClicked = (state, action) => {
+  return {
+    ...state,
+    showLoginModal: !state.showLoginModal,
+  };
+};
+
+const cancelModal = (state, action) => {
+  return {
+    ...state,
+    showLoginModal: false,
+  };
+};
+
+const querySubmit = (state, action) => {
+  return {
+    ...state,
+    searchQuery: action.query,
+  };
+};
+
+const fetchByCategories = (state, action) => {
+  return {
+    ...state,
+    byCategory: action.data,
+  };
+};
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
       return loadProducts(state, action);
     case actionTypes.PRODUCT_CLICKED:
       return productClicked(state, action);
+    case actionTypes.LOGIN_CLICKED:
+      return loginClicked(state, action);
+    case actionTypes.CANCEL_MODAL:
+      return cancelModal(state, action);
+    case actionTypes.QUERY_SUBMIT:
+      return querySubmit(state, action);
+    case actionTypes.FETCH_BY_CATEGORIES:
+      return fetchByCategories(state, action);
     default:
       return state;
   }

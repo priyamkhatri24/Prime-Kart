@@ -1,31 +1,8 @@
-.header {
-  margin: 20px auto;
-  width: 99%;
-  height: auto;
-  overflow: hidden;
-}
-
 .headerImg {
   width: 100%;
+  height: auto;
 }
-.slider {
-  display: flex;
+.header {
   width: 100%;
-  justify-content: space-between;
-  position: relative;
-  top: -190px;
-}
-.iconleft ion-icon {
-  color: black;
-  background-color: white;
-  padding: 30px 5px;
-  font-size: 30px;
-  border-radius: 0px 10px 10px 0px;
-}
-.iconright ion-icon {
-  color: black;
-  background-color: white;
-  padding: 30px 5px;
-  font-size: 30px;
-  border-radius: 10px 0px 0px 10px;
+  margin: 20px auto;
 }

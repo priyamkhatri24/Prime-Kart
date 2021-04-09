@@ -15,6 +15,7 @@
 .rightColumn {
   width: 50%;
   text-align: left;
+  margin: 30px;
 }
 .btns {
   display: flex;
@@ -80,4 +81,46 @@
 }
 .description {
   color: gray;
+}
+.sizeBar {
+  display: flex;
+  margin: 10px auto;
+  padding: 20px;
+  padding-left: 0px;
+  align-items: center;
+  flex-direction: row;
+}
+.colorBar {
+  display: flex;
+  margin: 10px auto;
+  padding: 20px;
+  padding-left: 0px;
+  align-items: center;
+  flex-direction: row;
+}
+.sizeBar p {
+  font-weight: 900;
+  color: #555;
+  margin-right: 50px;
+}
+.colorBar p {
+  font-weight: 900;
+  color: #555;
+  margin-right: 50px;
+}
+.sizeBar h5 {
+  margin: 0px 10px;
+  padding: 10px;
+  border: 1px solid #111;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.unorderedList {
+  margin: 30px 0px;
+}
+.unorderedList li {
+  margin: 5px auto;
+}
+.activeClass {
+  border: 2px solid #2874f0;
 }

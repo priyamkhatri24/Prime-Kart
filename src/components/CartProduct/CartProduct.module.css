@@ -1,0 +1,87 @@
+.cartProduct {
+  display: flex;
+  padding: 10px 20px;
+  margin: 0px;
+  flex-direction: row;
+  background-color: white;
+  width: 90%;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.cartImg {
+  width: 125px;
+  height: auto;
+}
+.plusminus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textColumn {
+  text-align: left;
+  margin: auto 40px;
+}
+.title {
+  margin: 10px auto;
+}
+.property {
+  color: gray;
+  margin: 10px auto;
+}
+.description {
+  color: rgb(85, 85, 85);
+}
+.prices {
+  display: flex;
+  align-items: center;
+}
+.crossedPrice {
+  text-decoration: line-through;
+  color: gray;
+  margin: auto 20px;
+}
+.prices {
+  margin: 10px auto;
+}
+.price {
+  margin: 10px 0px;
+  font-size: 20px;
+}
+.discount {
+  color: green;
+  font-weight: bold;
+}
+.increment,
+.decrement {
+  border: 1px solid rgba(65, 65, 65, 0.5);
+  display: flex;
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.qty {
+  border: 1px solid rgba(65, 65, 65, 0.5);
+  display: flex;
+  width: 50px;
+  margin: auto 10px;
+  height: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.remove {
+  margin: 10px 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.deliveryDate {
+  text-align: right;
+  width: 50%;
+}

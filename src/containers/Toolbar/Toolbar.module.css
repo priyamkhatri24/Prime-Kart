@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.55);
 }
 .toolbar .logo {
   color: white;
@@ -29,6 +30,7 @@ span {
 }
 .loginBtn {
   margin: auto 15px;
+  cursor: pointer;
   background-color: white;
   color: #2874f0;
   outline: none;
@@ -58,4 +60,38 @@ span {
   font-size: 20px;
   margin: auto 5px;
   font-weight: bolder;
+}
+.toolbarForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+.toolbarForm button {
+  background: none;
+  border: transparent;
+  outline: none;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.cartLength {
+  font-size: 10px;
+  margin: 3px;
+  position: relative;
+  top: -10px;
+  background-color: orangered;
+  padding: 3px;
+  border-radius: 100px;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

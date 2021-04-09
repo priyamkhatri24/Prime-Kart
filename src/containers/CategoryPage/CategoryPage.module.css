@@ -1,0 +1,13 @@
+.products {
+  display: flex;
+  flex-flow: wrap;
+  width: 85%;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+.subHead {
+  width: 80%;
+  text-align: left;
+  margin: 10px auto;
+}

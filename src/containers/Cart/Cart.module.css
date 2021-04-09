@@ -1,0 +1,83 @@
+.cart {
+  background-color: rgba(230, 230, 230, 0.5);
+  display: flex;
+  flex-flow: row;
+}
+.cartList {
+  width: 65%;
+  margin-left: 50px;
+}
+
+.heading {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  text-align: left;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  margin: 0px;
+  margin-top: 30px;
+}
+.heading h3 {
+  margin: 0px;
+  padding: 20px;
+}
+.heading h4 {
+  margin-right: 20px;
+  font-size: 20px;
+}
+.heading ion-icon {
+  margin: auto 10px;
+  font-size: 20px;
+}
+.summary {
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  margin-right: 30px;
+  background-color: white;
+  height: fit-content;
+  margin-top: 30px;
+}
+.summaryHead {
+  text-align: left;
+  color: gray;
+  font-weight: bolder;
+  width: 90%;
+  margin: 20px auto;
+}
+.summaryText {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+.horizontalLine {
+  border-top: 1px solid rgba(128, 128, 128, 0.432);
+  width: 90%;
+}
+.totalPrice {
+  font-weight: bolder;
+}
+.save {
+  font-weight: bold;
+  color: gray;
+}
+.placeOrder {
+  background-color: white;
+  width: 90%;
+  margin: 0px;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
+  text-align: right;
+  margin-bottom: 50px;
+}
+.placeOrderBtn {
+  width: 200px;
+  height: 60px;
+  color: white;
+  background-color: orangered;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

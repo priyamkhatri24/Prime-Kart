@@ -1,35 +1,22 @@
 import React, { Component } from "react";
+import Header from "../../components/Header/Header";
 import Categories from "../../components/Categories/Categories";
-import Header from "../Header/Header";
 import Product from "../../components/Product/Product";
-import classes from "./Landing.module.css";
+import Spinner from "../../UI/Spinner/Spinner";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/Actions/Actions";
-import Spinner from "../../UI/Spinner/Spinner";
+import classes from "./CategoryPage.module.css";
 
-class Landing extends Component {
-  state = {
-    // showLoginModal: false,
-  };
-
-  componentDidMount() {
-    this.props.loadProductsHandler();
-  }
-
+class CategoryPage extends Component {
   productClickedHandler = (product) => {
-    // this.setState({ showLoginModal: true });
     this.props.productClicked(product);
-
     this.props.history.push("/product");
     window.scroll({ top: 0 });
   };
 
-  // cancelModalHandler = () => {
-  //   this.setState({ showLoginModal: false });
-  // };
-
   render() {
-    let products;
+    const category = this.props.match.params.category;
+    let products = <Spinner />;
     if (this.props.products.length) {
       products = this.props.products.map((ele) => {
         const productPrice = ele.price * 72;
@@ -46,15 +33,11 @@ class Landing extends Component {
         );
       });
     }
-
-    if (!this.props.products.length) {
-      products = <Spinner />;
-    }
     return (
       <div>
         <Categories />
-        <Header />
-        <h1 className={classes.subHead}>Products</h1>
+        <Header category={category} />
+        <h2 className={classes.subHead}>{this.props.products[0]?.category}</h2>
         <div className={classes.products}>{products}</div>
       </div>
     );
@@ -63,14 +46,14 @@ class Landing extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products,
+    products: state.byCategory,
   };
 };
 
 const mapActionsToProps = (dispatch) => {
   return {
-    loadProductsHandler: () => dispatch(actionTypes.loadProducts()),
     productClicked: (product) => dispatch(actionTypes.productClicked(product)),
   };
 };
-export default connect(mapStateToProps, mapActionsToProps)(Landing);
+
+export default connect(mapStateToProps, mapActionsToProps)(CategoryPage);
