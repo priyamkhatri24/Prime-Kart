@@ -18,7 +18,8 @@
 }
 .textColumn {
   text-align: left;
-  margin: auto 40px;
+  margin: 10px 40px;
+  width: 100%;
 }
 .title {
   margin: 10px auto;
@@ -54,6 +55,7 @@
 .decrement {
   border: 1px solid rgba(65, 65, 65, 0.5);
   display: flex;
+  cursor: pointer;
   border-radius: 100px;
   width: 30px;
   height: 30px;
@@ -80,6 +82,7 @@
   margin: 10px 0px;
   font-size: 20px;
   cursor: pointer;
+  width: fit-content;
 }
 .deliveryDate {
   text-align: right;

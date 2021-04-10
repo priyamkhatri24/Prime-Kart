@@ -23,7 +23,9 @@ class Toolbar extends Component {
   render() {
     return (
       <div className={classes.toolbar}>
-        <h3 className={classes.logo}>PrimeKart</h3>
+        <NavLink to="/">
+          <h3 className={classes.logo}>PrimeKart</h3>
+        </NavLink>
         <span className={classes.search}>
           <form className={classes.toolbarForm}>
             <Input
@@ -46,7 +48,11 @@ class Toolbar extends Component {
         <NavLink to="/cart">
           <button className={classes.cartBtn}>
             <ion-icon name="cart"></ion-icon>Cart
-            <span className={classes.cartLength}>1</span>
+            {this.props.cart.length ? (
+              <span className={classes.cartLength}>
+                {this.props.cart.length}
+              </span>
+            ) : null}
           </button>
         </NavLink>
       </div>
@@ -57,6 +63,7 @@ class Toolbar extends Component {
 const mapStateToProps = (state) => {
   return {
     query: state.searchQuery,
+    cart: state.cart,
   };
 };
 

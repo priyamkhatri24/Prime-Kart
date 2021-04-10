@@ -13,7 +13,8 @@ const initialState = {
   },
   showLoginModal: false,
   searchQuery: "",
-  byCategory: [],
+  byCategory: null,
+  cart: [],
 };
 
 const loadProducts = (state, action) => {
@@ -58,6 +59,57 @@ const fetchByCategories = (state, action) => {
   };
 };
 
+const spinnerInit = (state) => {
+  return {
+    ...state,
+    byCategory: null,
+  };
+};
+
+const addToCart = (state, action) => {
+  const updatedCart = [...state.cart];
+  if (updatedCart.some((ele) => ele.id === action.product.id)) {
+    return state;
+  }
+  updatedCart.unshift(action.product);
+  return {
+    ...state,
+    cart: updatedCart,
+  };
+};
+
+const removeProduct = (state, action) => {
+  const oldCart = [...state.cart];
+  const updatedCart = oldCart.filter((ele) => ele.id !== action.product.id);
+  return {
+    ...state,
+    cart: updatedCart,
+  };
+};
+
+const increment = (state, action) => {
+  const updatedCart = [...state.cart];
+  const productIndex = updatedCart.findIndex((ele) => ele.id === action.id);
+  updatedCart[productIndex].specs.qty += 1;
+  return {
+    ...state,
+    cart: updatedCart,
+  };
+};
+const decrement = (state, action) => {
+  const updatedCart = [...state.cart];
+  const productIndex = updatedCart.findIndex((ele) => ele.id === action.id);
+  if (updatedCart[productIndex].specs.qty === 1) {
+    return state;
+  }
+  updatedCart[productIndex].specs.qty -= 1;
+
+  return {
+    ...state,
+    cart: updatedCart,
+  };
+};
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
@@ -72,6 +124,16 @@ export const reducer = (state = initialState, action) => {
       return querySubmit(state, action);
     case actionTypes.FETCH_BY_CATEGORIES:
       return fetchByCategories(state, action);
+    case actionTypes.SPINNER_INIT:
+      return spinnerInit(state);
+    case actionTypes.ADD_TO_CART:
+      return addToCart(state, action);
+    case actionTypes.REMOVE_PRODUCT:
+      return removeProduct(state, action);
+    case actionTypes.INCREMENT:
+      return increment(state, action);
+    case actionTypes.DECREMENT:
+      return decrement(state, action);
     default:
       return state;
   }

@@ -1,34 +1,75 @@
 import { React, Component } from "react";
 import classes from "./CheckoutProduct.module.css";
 import { connect } from "react-redux";
+import * as actionTypes from "../../store/Actions/Actions";
 
 class CheckoutProduct extends Component {
   state = {
     specs: {
-      size: 36,
-      color: "maroon",
-      plating: "goldenrod",
-      deliveryMethod: "cheapest",
+      size: null,
+      color: null,
+      plating: null,
+      deliveryMethod: null,
+      qty: 1,
     },
+    varClass: classes.varClass,
   };
+
   colorPlatingSelectHandler = (color) => {
     const updatedSpecs = { ...this.state.specs };
     updatedSpecs.plating = color;
     this.setState({ specs: updatedSpecs });
   };
+
   sizeSelectHandler = (size) => {
     const updatedSpecs = { ...this.state.specs };
     updatedSpecs.size = size;
     this.setState({ specs: updatedSpecs });
   };
+
   colorSelectHandler = (color) => {
     const updatedSpecs = { ...this.state.specs };
     updatedSpecs.color = color;
     this.setState({ specs: updatedSpecs });
   };
-  componentDidUpdate() {
-    console.log(this.state.specs);
-  }
+
+  customizationAlert = () => {
+    this.setState({ varClass: classes.alertClass });
+    console.log("alert");
+  };
+
+  addToCartHandler = () => {
+    const updatedProduct = { ...this.props.product };
+    updatedProduct.specs = this.state.specs;
+    if (updatedProduct.category === "jewelery") {
+      if (!updatedProduct.specs.plating) {
+        this.customizationAlert();
+        window.scroll({ top: 0, behavior: "smooth" });
+        return;
+      }
+    }
+    if (
+      updatedProduct.category === "men clothing" ||
+      updatedProduct.category === "women clothing"
+    ) {
+      if (!updatedProduct.specs.color) {
+        this.customizationAlert();
+        window.scroll({ top: 0, behavior: "smooth" });
+        return;
+      }
+      if (!updatedProduct.specs.size) {
+        this.customizationAlert();
+        window.scroll({ top: 0, behavior: "smooth" });
+        return;
+      }
+    }
+
+    this.props.addToCartHandler(updatedProduct);
+    this.setState({ varClass: classes.varClass });
+    this.props.history.push("/cart");
+    window.scroll({ top: 0, behavior: "smooth" });
+  };
+
   render() {
     const sizes = [36, 38, 40, 42, 44];
     const colors = ["maroon", "darkblue", "darkgreen", "white", "black"];
@@ -40,7 +81,7 @@ class CheckoutProduct extends Component {
     const productPrice = product.price * 72;
     const sizeBar = (
       <div className={classes.sizeBar}>
-        <p>Size</p>
+        <p className={this.state.varClass}>Size</p>
         {sizes.map((ele) => (
           <h5
             style={{
@@ -56,11 +97,14 @@ class CheckoutProduct extends Component {
             {ele}
           </h5>
         ))}
+        {this.state.varClass === classes.alertClass ? (
+          <p className={classes.alertClass}>Please select a color!</p>
+        ) : null}
       </div>
     );
     const colorBar = (
       <div className={classes.colorBar}>
-        <p>Colour</p>
+        <p className={this.state.varClass}>Colour</p>
         {colors.map((ele) => (
           <div
             onClick={this.colorSelectHandler.bind(this, ele)}
@@ -81,12 +125,15 @@ class CheckoutProduct extends Component {
             }}
           ></div>
         ))}
+        {this.state.varClass === classes.alertClass ? (
+          <p className={classes.alertClass}>Please select a color!</p>
+        ) : null}
       </div>
     );
     const platingBar = (
       <div>
         <div className={classes.colorBar}>
-          <p>Color plating</p>
+          <p className={this.state.varClass}>Color plating</p>
           {platings.map((ele) => (
             <div
               onClick={this.colorPlatingSelectHandler.bind(this, ele)}
@@ -107,6 +154,9 @@ class CheckoutProduct extends Component {
               }}
             ></div>
           ))}
+          {this.state.varClass === classes.alertClass ? (
+            <p className={classes.alertClass}>Please select a Color plating</p>
+          ) : null}
         </div>
       </div>
     );
@@ -115,7 +165,10 @@ class CheckoutProduct extends Component {
         <div className={classes.leftColumn}>
           <img className={classes.img} alt="Product" src={product.image} />
           <div className={classes.btns}>
-            <button className={cartBtn.join(" ")}>
+            <button
+              onClick={this.addToCartHandler}
+              className={cartBtn.join(" ")}
+            >
               <ion-icon name="cart"></ion-icon>ADD TO CART
             </button>
             <button className={flashBtn.join(" ")}>
@@ -174,7 +227,9 @@ const mapStateToProps = (state) => {
   };
 };
 const mapActionsToProps = (dispatch) => {
-  return {};
+  return {
+    addToCartHandler: (product) => dispatch(actionTypes.addToCart(product)),
+  };
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(CheckoutProduct);

@@ -3,6 +3,7 @@ import React from "react";
 import jewelery from "../../assets/h3.jpg";
 import fashion from "../../assets/h4.jpg";
 import electronics from "../../assets/h5.jpg";
+import def from "../../assets/h2.jpg";
 
 const header = (props) => {
   let image;
@@ -20,7 +21,7 @@ const header = (props) => {
       image = jewelery;
       break;
     default:
-      image = fashion;
+      image = def;
   }
   return (
     <div className={classes.header}>

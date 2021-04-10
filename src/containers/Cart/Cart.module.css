@@ -2,6 +2,7 @@
   background-color: rgba(230, 230, 230, 0.5);
   display: flex;
   flex-flow: row;
+  min-height: 90vh;
 }
 .cartList {
   width: 65%;

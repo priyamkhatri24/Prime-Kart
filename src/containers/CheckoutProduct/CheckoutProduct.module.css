@@ -35,6 +35,7 @@
   display: flex;
   align-items: center;
   margin: auto;
+  cursor: pointer;
   justify-content: center;
 }
 .cart {
@@ -98,16 +99,12 @@
   align-items: center;
   flex-direction: row;
 }
-.sizeBar p {
+.varClass {
   font-weight: 900;
   color: #555;
   margin-right: 50px;
 }
-.colorBar p {
-  font-weight: 900;
-  color: #555;
-  margin-right: 50px;
-}
+
 .sizeBar h5 {
   margin: 0px 10px;
   padding: 10px;
@@ -123,4 +120,9 @@
 }
 .activeClass {
   border: 2px solid #2874f0;
+}
+.alertClass {
+  font-weight: 900;
+  color: rgb(177, 0, 0);
+  margin-right: 50px;
 }
