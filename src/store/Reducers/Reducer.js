@@ -12,9 +12,12 @@ const initialState = {
     image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
   },
   showLoginModal: false,
+  showOrderPlacedModal: false,
   searchQuery: "",
   byCategory: null,
   cart: [],
+  totalPrice: 0,
+  customer: null,
 };
 
 const loadProducts = (state, action) => {
@@ -110,6 +113,37 @@ const decrement = (state, action) => {
   };
 };
 
+const updateTotalPrice = (state, action) => {
+  return {
+    ...state,
+    totalPrice: action.totalPrice,
+  };
+};
+
+const formEdit = (state, action) => {
+  return {
+    ...state,
+    customer: action.data,
+  };
+};
+
+const placeOrder = (state, action) => {
+  return {
+    ...state,
+    showOrderPlacedModal: true,
+  };
+};
+
+const closeOrderPlacedModal = (state) => {
+  return {
+    ...state,
+    cart: [],
+    products: [],
+    byCategory: null,
+    showOrderPlacedModal: false,
+  };
+};
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
@@ -134,6 +168,14 @@ export const reducer = (state = initialState, action) => {
       return increment(state, action);
     case actionTypes.DECREMENT:
       return decrement(state, action);
+    case actionTypes.UPDATE_PRICE:
+      return updateTotalPrice(state, action);
+    case actionTypes.FORM_EDIT:
+      return formEdit(state, action);
+    case actionTypes.PLACE_ORDER:
+      return placeOrder(state, action);
+    case actionTypes.CLOSE_ORDER_PLACED_MODAL:
+      return closeOrderPlacedModal(state);
     default:
       return state;
   }

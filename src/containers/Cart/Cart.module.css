@@ -65,6 +65,9 @@
   color: gray;
 }
 .placeOrder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: white;
   width: 90%;
   margin: 0px;
@@ -72,6 +75,9 @@
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6);
   text-align: right;
   margin-bottom: 50px;
+}
+.placeOrder h3 {
+  cursor: pointer;
 }
 .placeOrderBtn {
   width: 200px;

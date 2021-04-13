@@ -12,7 +12,10 @@ const modal = (props) => {
   return (
     <React.Fragment>
       {props.show ? <Backdrop clicked={props.cancelModal} /> : null}
-      <div className={classList.join(" ")}>
+      <div
+        className={classList.join(" ")}
+        style={{ height: props.show ? props.height : "0px" }}
+      >
         {props.show ? props.children : null}
       </div>
     </React.Fragment>

@@ -1,17 +1,15 @@
 .loader,
 .loader:after {
   border-radius: 50%;
-  width: 10em;
-  height: 10em;
 }
 .loader {
-  margin: 60px auto;
+  margin: auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(15,191,194, 0.2);
-  border-right: 1.1em solid rgba(15,191,194, 0.2);
-  border-bottom: 1.1em solid rgba(15,191,194, 0.2);
+  border-top: 1.1em solid rgba(15, 191, 194, 0.2);
+  border-right: 1.1em solid rgba(15, 191, 194, 0.2);
+  border-bottom: 1.1em solid rgba(15, 191, 194, 0.2);
   border-left: 1.1em solid #2874f0;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);

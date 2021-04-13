@@ -48,7 +48,7 @@ class Landing extends Component {
     }
 
     if (!this.props.products.length) {
-      products = <Spinner />;
+      products = <Spinner width="5rem" height="5rem" />;
     }
     return (
       <div>

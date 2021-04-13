@@ -17,7 +17,7 @@ class CategoryPage extends Component {
   render() {
     const category = this.props.match.params.category;
     let products;
-    if (!this.props.products) products = <Spinner />;
+    if (!this.props.products) products = <Spinner width="5rem" height="5rem" />;
     if (this.props.products) {
       if (this.props.products.length) {
         products = this.props.products.map((ele) => {

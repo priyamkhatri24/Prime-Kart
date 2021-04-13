@@ -8,6 +8,14 @@ class Cart extends Component {
   removeProductHandler = (product) => {
     this.props.removeProductHandler(product);
   };
+  continueShoppingHandler = () => {
+    this.props.history.push("/");
+  };
+  placeOrderHandler = (totalPrice) => {
+    this.props.history.push("/checkout");
+    this.props.updateTotalPrice((totalPrice * 72).toFixed(2));
+    window.scroll({ top: 0 });
+  };
 
   render() {
     const priceList = this.props.cart.map((ele) => {
@@ -45,7 +53,13 @@ class Cart extends Component {
           <div>{cartList}</div>
           {this.props.cart.length ? (
             <div className={classes.placeOrder}>
-              <button className={classes.placeOrderBtn}>PLACE ORDER</button>
+              <h3 onClick={this.continueShoppingHandler}>CONTINUE SHOPPING</h3>
+              <button
+                onClick={this.placeOrderHandler.bind(this, totalPrice)}
+                className={classes.placeOrderBtn}
+              >
+                PLACE ORDER
+              </button>
             </div>
           ) : null}
         </div>
@@ -94,6 +108,8 @@ const mapActionsToProps = (dispatch) => {
       dispatch(actionTypes.removeProduct(product)),
     qtyIncrement: (id) => dispatch(actionTypes.qtyIncrement(id)),
     qtyDecrement: (id) => dispatch(actionTypes.qtyDecrement(id)),
+    updateTotalPrice: (totalPrice) =>
+      dispatch(actionTypes.updateTotalPrice(totalPrice)),
   };
 };
 export default connect(mapStateToProps, mapActionsToProps)(Cart);

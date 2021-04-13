@@ -1,3 +1,4 @@
+import axios from "axios";
 export const LOAD_PRODUCTS = "LOAD_PRODUCTS";
 export const PRODUCT_CLICKED = "PRODUCT_CLICKED";
 export const LOGIN_CLICKED = "LOGIN_CLICKED";
@@ -9,6 +10,12 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
+export const UPDATE_PRICE = "UPDATE_PRICE";
+export const FORM_EDIT = "FORM_EDIT";
+export const PLACE_ORDER = "PLACE_ORDER";
+export const CLOSE_ORDER_PLACED_MODAL = "CLOSE_ORDER_PLACED_MODAL";
+export const LOGIN = "LOGIN";
+export const SIGNUP = "SIGNUP";
 
 export const loadProducts = () => {
   return (dispatch) => {
@@ -16,7 +23,8 @@ export const loadProducts = () => {
       .then((res) => res.json())
       .then((products) => {
         dispatch({ type: LOAD_PRODUCTS, products: products });
-      });
+      })
+      .catch((err) => alert("Something went wrong"));
   };
 };
 
@@ -80,5 +88,69 @@ export const qtyDecrement = (id) => {
   return {
     type: DECREMENT,
     id: id,
+  };
+};
+
+export const updateTotalPrice = (totalPrice) => {
+  return {
+    type: UPDATE_PRICE,
+    totalPrice: totalPrice,
+  };
+};
+
+export const formEdit = (data) => {
+  return {
+    type: FORM_EDIT,
+    data: data,
+  };
+};
+
+export const placeOrder = (products, customer, totalPrice) => {
+  const data = {
+    products: products,
+    customer: customer,
+    amount: totalPrice,
+  };
+  return (dispatch) => {
+    axios
+      .post("https://prime-kart-default-rtdb.firebaseio.com/order.json", data)
+      .then((res) => {
+        dispatch({ type: PLACE_ORDER });
+      })
+      .catch((err) =>
+        alert("Something went wrong. Please try reloading the site")
+      );
+  };
+};
+
+export const closeOrderPlacedModal = () => {
+  return {
+    type: CLOSE_ORDER_PLACED_MODAL,
+  };
+};
+
+export const loginHandler = () => {
+  return {
+    type: LOGIN,
+  };
+};
+export const signupHanlder = (email, password) => {
+  return (dispatch) => {
+    const payload = {
+      email: email,
+      password: password,
+      returnSecureToken: true,
+    };
+    console.log(payload);
+    axios
+      .post(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBPV6R-sNmVqArSK3oMgzFbHcKs29ZZsEI",
+        payload
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: SIGNUP });
+      })
+      .catch((err) => dispatch({ type: SIGNUP, error: err }));
   };
 };

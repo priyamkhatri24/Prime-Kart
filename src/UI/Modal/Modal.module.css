@@ -1,7 +1,5 @@
 .modal {
   width: 50%;
-  height: 400px;
-  min-height: 150px;
   z-index: 500;
   position: fixed;
   display: flex;
@@ -9,12 +7,13 @@
   top: 15vh;
   left: 25%;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   text-align: center;
   transition-duration: 0.3s;
 }
 .modal_not_shown {
   transform: translateY(-100vh);
+  display: none;
   opacity: 0;
 }
 

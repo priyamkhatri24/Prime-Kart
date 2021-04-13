@@ -47,8 +47,9 @@
   background-color: orangered;
   outline: none;
   border: none;
+  cursor: pointer;
 }
-form input {
+.loginForm input {
   width: 70%;
   margin: 15px;
   height: 30px;
@@ -58,8 +59,18 @@ form input {
 }
 .bottomText {
   position: relative;
+  width: 100%;
   bottom: -100px;
   text-align: center;
   font-weight: 500;
-  color: #2874f0;
+  color: #1b60ce;
+}
+.createAccount {
+  margin: 0px;
+  display: inline-block;
+  padding: 0px;
+  cursor: pointer;
+}
+.createAccount:hover {
+  color: #00307e;
 }

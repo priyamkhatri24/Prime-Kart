@@ -1,0 +1,75 @@
+.formContainer {
+  width: 60%;
+  text-align: left;
+  background-color: #e6e6e680;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 30px;
+  width: 100%;
+}
+.formInput {
+  border: 1px solid rgb(158, 158, 158);
+  outline: none;
+  width: 300px;
+  min-width: 300px;
+  height: 30px;
+  padding: 5px;
+  margin: 15px 0px;
+}
+.correct {
+  border: 1px solid rgb(158, 158, 158);
+}
+.correct:focus {
+  border: 1px solid rgb(0, 126, 175);
+}
+.incorrect {
+  border: 1px solid rgb(175, 0, 0);
+}
+.incorrect:focus {
+  border: 1px solid rgb(175, 0, 0);
+}
+.placeOrderBtn {
+  width: 150px;
+  height: 50px;
+  color: white;
+  background-color: orangered;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+.modalCloseBtn {
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: orangered;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+.invalidFormData {
+  margin: auto 10px;
+  color: red;
+  width: fit-content;
+}
+.heading {
+  margin-left: 30px;
+  color: rgb(83, 83, 83);
+}
+.successText {
+  margin: auto;
+}
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}

@@ -10,22 +10,42 @@ import Modal from "../../UI/Modal/Modal";
 import Login from "../../components/Login/Login";
 import CategoryPage from "../CategoryPage/CategoryPage";
 import Cart from "../Cart/Cart";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 class Layout extends Component {
+  state = {
+    isLoginState: true,
+  };
+  proceedToSignupHandler = () => {
+    this.setState({ isLoginState: false });
+  };
+  proceedToLoginHandler = () => {
+    this.setState({ isLoginState: true });
+  };
+  cancelModalHandler = () => {
+    this.setState({ isLoginState: true });
+    this.props.cancelModalHandler();
+  };
   render() {
     return (
       <div>
         <Toolbar loginClicked={this.props.loginClickedHandler} />
         <Modal
-          cancelModal={this.props.cancelModalHandler}
+          height="400px"
+          cancelModal={this.cancelModalHandler}
           show={this.props.showLoginModal}
         >
-          <Login />
+          <Login
+            proceedToSignup={this.proceedToSignupHandler}
+            proceedToLogin={this.proceedToLoginHandler}
+            isLogin={this.state.isLoginState}
+          />
         </Modal>
         <Route exact path="/" component={Landing} />
         <Route path="/product" component={CheckoutProduct} />
         <Route path="/category/:category" component={CategoryPage} />
         <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={CheckoutForm} />
         <Footer />
       </div>
     );
