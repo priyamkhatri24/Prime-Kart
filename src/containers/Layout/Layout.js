@@ -7,7 +7,7 @@ import CheckoutProduct from "../../containers/CheckoutProduct/CheckoutProduct";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/Actions/Actions";
 import Modal from "../../UI/Modal/Modal";
-import Login from "../../components/Login/Login";
+import Login from "../Login/Login";
 import CategoryPage from "../CategoryPage/CategoryPage";
 import Cart from "../Cart/Cart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
@@ -54,7 +54,7 @@ class Layout extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showLoginModal: state.showLoginModal,
+    showLoginModal: state.cartReducer.showLoginModal,
   };
 };
 

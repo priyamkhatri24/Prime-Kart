@@ -223,7 +223,7 @@ class CheckoutProduct extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    product: state.clickedProduct,
+    product: state.cartReducer.clickedProduct,
   };
 };
 const mapActionsToProps = (dispatch) => {

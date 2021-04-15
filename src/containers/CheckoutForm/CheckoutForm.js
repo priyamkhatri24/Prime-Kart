@@ -159,10 +159,10 @@ class CheckoutForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cart: state.cart,
-    customer: state.customer,
-    totalPrice: state.totalPrice,
-    showOrderPlacedModal: state.showOrderPlacedModal,
+    cart: state.cartReducer.cart,
+    customer: state.cartReducer.customer,
+    totalPrice: state.cartReducer.totalPrice,
+    showOrderPlacedModal: state.cartReducer.showOrderPlacedModal,
   };
 };
 const mapActionsToProps = (dispatch) => {

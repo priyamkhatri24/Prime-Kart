@@ -144,7 +144,7 @@ const closeOrderPlacedModal = (state) => {
   };
 };
 
-export const reducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
       return loadProducts(state, action);

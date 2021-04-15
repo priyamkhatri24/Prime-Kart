@@ -52,18 +52,20 @@ class Login extends Component {
         ></input>
       );
     });
+    
     return (
       <div className={classes.login}>
         <div className={classes.leftSide}>
           <h2>{this.props.isLogin ? "Login" : "Signup"}</h2>
-          <p>
+          <p className={classes.leftSideText}>
             {this.props.isLogin
               ? "Get access to your Orders, Wishlist and Recommendations"
-              : "Lets get started"}
+              : "Lets get started, Signup and create your own Primekart"}
           </p>
           <img className={classes.img} src={img} alt="Login"></img>
         </div>
         <div className={classes.rightSide}>
+          <p className={classes.message}>Account created successfully</p>
           <form className={classes.loginForm}>
             {authForm}
             <p className={classes.grayPara}>
@@ -110,9 +112,6 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
 const mapActionsToProps = (dispatch) => {
   return {
     loginHandler: () => dispatch(actionTypes.loginHandler()),
@@ -121,4 +120,4 @@ const mapActionsToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Login);
+export default connect(null, mapActionsToProps)(Login);

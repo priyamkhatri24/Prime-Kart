@@ -7,6 +7,7 @@
 }
 .leftSide {
   width: 40%;
+  min-width: 300px;
   background-color: #2874f0;
   text-align: left;
   color: white;
@@ -14,6 +15,10 @@
   overflow: hidden;
   position: relative;
   padding-top: 30px;
+}
+.message {
+  margin: auto;
+  font-size: 15px;
 }
 .leftSide h2,
 .leftSide p {
@@ -60,7 +65,7 @@
 .bottomText {
   position: relative;
   width: 100%;
-  bottom: -100px;
+  bottom: -80px;
   text-align: center;
   font-weight: 500;
   color: #1b60ce;

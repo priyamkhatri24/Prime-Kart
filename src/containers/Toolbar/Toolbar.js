@@ -62,8 +62,8 @@ class Toolbar extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    query: state.searchQuery,
-    cart: state.cart,
+    query: state.cartReducer.searchQuery,
+    cart: state.cartReducer.cart,
   };
 };
 

@@ -58,7 +58,7 @@ class CategoryPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.byCategory,
+    products: state.cartReducer.byCategory,
   };
 };
 
