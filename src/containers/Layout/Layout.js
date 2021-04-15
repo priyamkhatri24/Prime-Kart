@@ -13,15 +13,6 @@ import Cart from "../Cart/Cart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 class Layout extends Component {
-  state = {
-    isLoginState: true,
-  };
-  proceedToSignupHandler = () => {
-    this.setState({ isLoginState: false });
-  };
-  proceedToLoginHandler = () => {
-    this.setState({ isLoginState: true });
-  };
   cancelModalHandler = () => {
     this.setState({ isLoginState: true });
     this.props.cancelModalHandler();
@@ -35,11 +26,7 @@ class Layout extends Component {
           cancelModal={this.cancelModalHandler}
           show={this.props.showLoginModal}
         >
-          <Login
-            proceedToSignup={this.proceedToSignupHandler}
-            proceedToLogin={this.proceedToLoginHandler}
-            isLogin={this.state.isLoginState}
-          />
+          <Login />
         </Modal>
         <Route exact path="/" component={Landing} />
         <Route path="/product" component={CheckoutProduct} />
@@ -54,7 +41,7 @@ class Layout extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    showLoginModal: state.cartReducer.showLoginModal,
+    showLoginModal: state.authReducer.showLoginModal,
   };
 };
 

@@ -20,6 +20,21 @@ class Login extends Component {
         name: "password",
       },
     },
+    isLoginState: true,
+  };
+  proceedToSignupHandler = () => {
+    const form = { ...this.state.form };
+    form.email.value = "";
+    form.password.value = "";
+    this.setState({ isLoginState: false, form: form });
+    this.props.resetAuthState();
+  };
+  proceedToLoginHandler = () => {
+    const form = { ...this.state.form };
+    form.email.value = "";
+    form.password.value = "";
+    this.setState({ isLoginState: true, form: form });
+    this.props.resetAuthState();
   };
 
   inputChangedHandler = (e) => {
@@ -28,16 +43,25 @@ class Login extends Component {
     this.setState({ form: form });
   };
 
-  signupHanlder = (e) => {
+  authHandler = (e) => {
     e.preventDefault();
 
-    this.props.signupHanlder(
-      this.state.form.email.value,
-      this.state.form.password.value
-    );
+    if (this.state.isLoginState) {
+      this.props.loginHandler(
+        this.state.form.email.value,
+        this.state.form.password.value
+      );
+    } else {
+      this.props.signupHanlder(
+        this.state.form.email.value,
+        this.state.form.password.value
+      );
+    }
   };
 
   render() {
+    const greenMsg = [classes.message, classes.green].join(" ");
+    const redMsg = [classes.message, classes.red].join(" ");
     const form = { ...this.state.form };
     const formAttributes = Object.keys(form);
     const authForm = formAttributes.map((ele) => {
@@ -52,47 +76,53 @@ class Login extends Component {
         ></input>
       );
     });
-    
+
     return (
       <div className={classes.login}>
         <div className={classes.leftSide}>
-          <h2>{this.props.isLogin ? "Login" : "Signup"}</h2>
+          <h2>{this.state.isLoginState ? "Login" : "Signup"}</h2>
           <p className={classes.leftSideText}>
-            {this.props.isLogin
+            {this.state.isLoginState
               ? "Get access to your Orders, Wishlist and Recommendations"
               : "Lets get started, Signup and create your own Primekart"}
           </p>
           <img className={classes.img} src={img} alt="Login"></img>
         </div>
         <div className={classes.rightSide}>
-          <p className={classes.message}>Account created successfully</p>
+          <p
+            className={
+              this.props.userID || this.props.signupSuccess ? greenMsg : redMsg
+            }
+          >
+            {this.props.message}
+          </p>
           <form className={classes.loginForm}>
             {authForm}
             <p className={classes.grayPara}>
               By continuing, you agree to PrimeKart's Terms of Use and Privacy
               Policy.
             </p>
-            {this.props.isLogin ? (
+            {this.state.isLoginState ? (
               <button
-                onClick={this.props.loginHandler}
+                onClick={this.authHandler}
                 className={classes.loginButton}
               >
                 Login
               </button>
             ) : (
               <button
-                onClick={this.signupHanlder}
+                onClick={this.authHandler}
                 className={classes.loginButton}
               >
                 Signup
               </button>
             )}
           </form>
-          {this.props.isLogin ? (
+          {this.state.isLoginState ? (
             <p className={classes.bottomText}>
               New to Primekart?{" "}
               <span
-                onClick={this.props.proceedToSignup}
+                onClick={this.proceedToSignupHandler}
                 className={classes.createAccount}
               >
                 Create an account
@@ -100,7 +130,7 @@ class Login extends Component {
             </p>
           ) : (
             <p
-              onClick={this.props.proceedToLogin}
+              onClick={this.proceedToLoginHandler}
               className={[classes.bottomText, classes.createAccount].join(" ")}
             >
               Proceed to Login
@@ -112,12 +142,25 @@ class Login extends Component {
   }
 }
 
-const mapActionsToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    loginHandler: () => dispatch(actionTypes.loginHandler()),
-    signupHanlder: (email, password) =>
-      dispatch(actionTypes.signupHanlder(email, password)),
+    email: state.authReducer.email,
+    userID: state.authReducer.userID,
+    token: state.authReducer.token,
+    error: state.authReducer.error,
+    signupSuccess: state.authReducer.signupSuccess,
+    message: state.authReducer.message,
   };
 };
 
-export default connect(null, mapActionsToProps)(Login);
+const mapActionsToProps = (dispatch) => {
+  return {
+    loginHandler: (email, password) =>
+      dispatch(actionTypes.loginHandler(email, password)),
+    signupHanlder: (email, password) =>
+      dispatch(actionTypes.signupHanlder(email, password)),
+    resetAuthState: () => dispatch(actionTypes.resetAuthState()),
+  };
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Login);

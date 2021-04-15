@@ -17,7 +17,7 @@
   padding-top: 30px;
 }
 .message {
-  margin: auto;
+  margin: 5px auto;
   font-size: 15px;
 }
 .leftSide h2,
@@ -53,6 +53,14 @@
   outline: none;
   border: none;
   cursor: pointer;
+}
+.red {
+  color: red;
+  margin: 0px;
+}
+.green {
+  color: green;
+  margin: 0px;
 }
 .loginForm input {
   width: 70%;

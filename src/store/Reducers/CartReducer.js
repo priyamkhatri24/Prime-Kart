@@ -11,7 +11,7 @@ const initialState = {
     category: "men clothing",
     image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
   },
-  showLoginModal: false,
+
   showOrderPlacedModal: false,
   searchQuery: "",
   byCategory: null,
@@ -31,20 +31,6 @@ const productClicked = (state, action) => {
   return {
     ...state,
     clickedProduct: action.product,
-  };
-};
-
-const loginClicked = (state, action) => {
-  return {
-    ...state,
-    showLoginModal: !state.showLoginModal,
-  };
-};
-
-const cancelModal = (state, action) => {
-  return {
-    ...state,
-    showLoginModal: false,
   };
 };
 
@@ -150,10 +136,7 @@ export const cartReducer = (state = initialState, action) => {
       return loadProducts(state, action);
     case actionTypes.PRODUCT_CLICKED:
       return productClicked(state, action);
-    case actionTypes.LOGIN_CLICKED:
-      return loginClicked(state, action);
-    case actionTypes.CANCEL_MODAL:
-      return cancelModal(state, action);
+
     case actionTypes.QUERY_SUBMIT:
       return querySubmit(state, action);
     case actionTypes.FETCH_BY_CATEGORIES:
