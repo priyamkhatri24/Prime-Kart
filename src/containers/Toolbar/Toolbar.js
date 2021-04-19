@@ -55,6 +55,11 @@ class Toolbar extends Component {
             ) : null}
           </button>
         </NavLink>
+        {this.props.token ? (
+          <NavLink to={`/my orders?token=${this.props.token}`}>
+            <button className={classes.cartBtn}>My Orders</button>
+          </NavLink>
+        ) : null}
       </div>
     );
   }
@@ -64,6 +69,7 @@ const mapStateToProps = (state) => {
   return {
     query: state.cartReducer.searchQuery,
     cart: state.cartReducer.cart,
+    token: state.authReducer.token,
   };
 };
 
