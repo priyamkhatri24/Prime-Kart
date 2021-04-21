@@ -13,13 +13,17 @@ const cartProduct = (props) => {
             src={props.product.image}
           ></img>
           <div className={classes.plusminus}>
-            <p onClick={props.qtyDecrement} className={classes.decrement}>
-              -
-            </p>
+            {props.needPlusminus ? (
+              <p onClick={props.qtyDecrement} className={classes.decrement}>
+                -
+              </p>
+            ) : null}
             <p className={classes.qty}>{props.product.specs.qty}</p>
-            <p onClick={props.qtyIncrement} className={classes.increment}>
-              +
-            </p>
+            {props.needPlusminus ? (
+              <p onClick={props.qtyIncrement} className={classes.increment}>
+                +
+              </p>
+            ) : null}
           </div>
         </div>
         <div className={classes.textColumn}>
@@ -51,13 +55,16 @@ const cartProduct = (props) => {
             </p>
             <p className={classes.discount}>50% off</p>
           </div>
-          <h3 onClick={props.remove} className={classes.remove}>
-            REMOVE
-          </h3>
+          {props.needRemove ? (
+            <h3 onClick={props.remove} className={classes.remove}>
+              REMOVE
+            </h3>
+          ) : null}
         </div>
         <div className={classes.deliveryDate}>
           <p className={classes.delivery}>
-            Delivery by: Friday April 16th | Free
+            {props.needPlusminus ? "Delivery by" : "Delivered on"}: Friday April
+            16th | Free
           </p>
         </div>
       </div>

@@ -11,10 +11,10 @@ const header = (props) => {
     case "electronics":
       image = electronics;
       break;
-    case "men clothing":
+    case "men's clothing":
       image = fashion;
       break;
-    case "women clothing":
+    case "women's clothing":
       image = fashion;
       break;
     case "jewelery":

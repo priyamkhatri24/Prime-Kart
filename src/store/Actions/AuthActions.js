@@ -1,5 +1,6 @@
 import axios from "axios";
 export const LOGIN_CLICKED = "LOGIN_CLICKED";
+export const LOGOUT_CLICKED = "LOGOUT_CLICKED";
 export const CANCEL_MODAL = "CANCEL_MODAL";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAIL = "SIGNUP_FAIL";
@@ -16,6 +17,11 @@ export const cancelModalHandler = () => {
 export const loginClicked = () => {
   return {
     type: LOGIN_CLICKED,
+  };
+};
+export const logoutClicked = () => {
+  return {
+    type: LOGOUT_CLICKED,
   };
 };
 const signupSuccess = (res) => {

@@ -18,6 +18,7 @@ const initialState = {
   cart: [],
   totalPrice: 0,
   customer: null,
+  myOrder: null,
 };
 
 const loadProducts = (state, action) => {
@@ -45,6 +46,7 @@ const fetchByCategories = (state, action) => {
   return {
     ...state,
     byCategory: action.data,
+    searchQuery: "",
   };
 };
 
@@ -130,6 +132,24 @@ const closeOrderPlacedModal = (state) => {
   };
 };
 
+const fetchOrders = (state, action) => {
+  return {
+    ...state,
+    myOrder: action.orders,
+  };
+};
+const logoutHandler = (state) => {
+  return {
+    ...state,
+    searchQuery: "",
+    byCategory: null,
+    cart: [],
+    totalPrice: 0,
+    customer: null,
+    myOrder: null,
+  };
+};
+
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
@@ -159,6 +179,10 @@ export const cartReducer = (state = initialState, action) => {
       return placeOrder(state, action);
     case actionTypes.CLOSE_ORDER_PLACED_MODAL:
       return closeOrderPlacedModal(state);
+    case actionTypes.FETCH_ORDERS:
+      return fetchOrders(state, action);
+    case actionTypes.LOGOUT_CLICKED:
+      return logoutHandler(state);
     default:
       return state;
   }

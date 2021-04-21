@@ -12,6 +12,7 @@ export const UPDATE_PRICE = "UPDATE_PRICE";
 export const FORM_EDIT = "FORM_EDIT";
 export const PLACE_ORDER = "PLACE_ORDER";
 export const CLOSE_ORDER_PLACED_MODAL = "CLOSE_ORDER_PLACED_MODAL";
+export const FETCH_ORDERS = "FETCH_ORDERS";
 
 export const loadProducts = () => {
   return (dispatch) => {
@@ -88,11 +89,12 @@ export const formEdit = (data) => {
     data: data,
   };
 };
-export const placeOrder = (products, customer, totalPrice) => {
+export const placeOrder = (products, customer, totalPrice, userID) => {
   const data = {
     products: products,
     customer: customer,
     amount: totalPrice,
+    userID: userID,
   };
   return (dispatch) => {
     axios
@@ -109,5 +111,16 @@ export const placeOrder = (products, customer, totalPrice) => {
 export const closeOrderPlacedModal = () => {
   return {
     type: CLOSE_ORDER_PLACED_MODAL,
+  };
+};
+
+export const fetchOrders = (userID) => {
+  return (dispatch) => {
+    fetch(
+      `https://prime-kart-default-rtdb.firebaseio.com/order.json?orderBy="userID"&equalTo="${userID}"`
+    )
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: FETCH_ORDERS, orders: data }))
+      .catch((err) => alert("Something went wrong"));
   };
 };

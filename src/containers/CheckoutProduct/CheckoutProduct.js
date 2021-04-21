@@ -35,7 +35,6 @@ class CheckoutProduct extends Component {
 
   customizationAlert = () => {
     this.setState({ varClass: classes.alertClass });
-    console.log("alert");
   };
 
   addToCartHandler = () => {
@@ -49,8 +48,8 @@ class CheckoutProduct extends Component {
       }
     }
     if (
-      updatedProduct.category === "men clothing" ||
-      updatedProduct.category === "women clothing"
+      updatedProduct.category === "men's clothing" ||
+      updatedProduct.category === "women's clothing"
     ) {
       if (!updatedProduct.specs.color) {
         this.customizationAlert();
@@ -64,10 +63,15 @@ class CheckoutProduct extends Component {
       }
     }
 
-    this.props.addToCartHandler(updatedProduct);
     this.setState({ varClass: classes.varClass });
-    this.props.history.push("/cart");
-    window.scroll({ top: 0, behavior: "smooth" });
+    if (this.props.token) {
+      this.props.history.push(`/cart?token=${this.props.token}`);
+      this.props.addToCartHandler(updatedProduct);
+      window.scroll({ top: 0, behavior: "smooth" });
+    } else {
+      this.props.loginModalHandler();
+      window.scroll({ top: 0, behavior: "smooth" });
+    }
   };
 
   render() {
@@ -189,12 +193,12 @@ class CheckoutProduct extends Component {
           </span>
 
           <p className={classes.description}>{product.description}</p>
-          {product.category === "men clothing" ||
-          product.category === "women clothing"
+          {product.category === "men's clothing" ||
+          product.category === "women's clothing"
             ? sizeBar
             : null}
-          {product.category === "men clothing" ||
-          product.category === "women clothing"
+          {product.category === "men's clothing" ||
+          product.category === "women's clothing"
             ? colorBar
             : null}
           {product.category === "jewelery" ? platingBar : null}
@@ -224,11 +228,13 @@ class CheckoutProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     product: state.cartReducer.clickedProduct,
+    token: state.authReducer.token,
   };
 };
 const mapActionsToProps = (dispatch) => {
   return {
     addToCartHandler: (product) => dispatch(actionTypes.addToCart(product)),
+    loginModalHandler: () => dispatch(actionTypes.loginClicked()),
   };
 };
 

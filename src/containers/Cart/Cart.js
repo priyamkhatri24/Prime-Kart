@@ -37,6 +37,8 @@ class Cart extends Component {
             qtyDecrement={this.props.qtyDecrement.bind(this, ele.id)}
             key={ele.id}
             remove={this.removeProductHandler.bind(this, ele)}
+            needRemove
+            needPlusminus
           />
         );
       });

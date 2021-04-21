@@ -82,6 +82,14 @@ const resetAuthState = (state) => {
     message: null,
   };
 };
+const logoutClicked = (state) => {
+  return {
+    ...state,
+    email: null,
+    userID: null,
+    token: null,
+  };
+};
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_CLICKED:
@@ -98,6 +106,8 @@ export const authReducer = (state = initialState, action) => {
       return loginSuccess(state, action);
     case actionTypes.LOGIN_FAIL:
       return loginFail(state, action);
+    case actionTypes.LOGOUT_CLICKED:
+      return logoutClicked(state);
     default:
       return state;
   }

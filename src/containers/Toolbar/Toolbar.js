@@ -18,6 +18,7 @@ class Toolbar extends Component {
     e.preventDefault();
     this.props.fetchCategories(this.props.query);
     this.props.history.push(`/category/${this.props.query}`);
+    e.target.closest("form").reset();
   };
 
   render() {
@@ -42,19 +43,33 @@ class Toolbar extends Component {
             </button>
           </form>
         </span>
-        <button onClick={this.props.loginClicked} className={classes.loginBtn}>
-          Login
-        </button>
-        <NavLink to="/cart">
-          <button className={classes.cartBtn}>
-            <ion-icon name="cart"></ion-icon>Cart
-            {this.props.cart.length ? (
-              <span className={classes.cartLength}>
-                {this.props.cart.length}
-              </span>
-            ) : null}
+        {!this.props.token ? (
+          <button
+            onClick={this.props.loginClicked}
+            className={classes.loginBtn}
+          >
+            Login
           </button>
-        </NavLink>
+        ) : (
+          <button
+            onClick={this.props.logoutClicked}
+            className={classes.loginBtn}
+          >
+            Logout
+          </button>
+        )}
+        {this.props.token ? (
+          <NavLink to={`/cart`}>
+            <button className={classes.cartBtn}>
+              <ion-icon name="cart"></ion-icon>Cart
+              {this.props.cart.length ? (
+                <span className={classes.cartLength}>
+                  {this.props.cart.length}
+                </span>
+              ) : null}
+            </button>
+          </NavLink>
+        ) : null}
         {this.props.token ? (
           <NavLink to={`/my orders?token=${this.props.token}`}>
             <button className={classes.cartBtn}>My Orders</button>

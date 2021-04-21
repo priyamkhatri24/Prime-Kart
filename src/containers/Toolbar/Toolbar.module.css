@@ -47,6 +47,7 @@ span {
   color: white;
   outline: none;
   border: transparent;
+  cursor: pointer;
   height: 35px;
   width: 120px;
   font-weight: bold;
@@ -81,6 +82,7 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
 .cartLength {
   font-size: 10px;
   margin: 3px;

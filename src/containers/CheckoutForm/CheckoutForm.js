@@ -85,7 +85,8 @@ class CheckoutForm extends Component {
       this.props.placeOrder(
         this.props.cart,
         this.props.customer,
-        this.props.totalPrice
+        this.props.totalPrice,
+        this.props.userID
       );
     } else {
       this.setState({ isFormValid: false });
@@ -163,13 +164,14 @@ const mapStateToProps = (state) => {
     customer: state.cartReducer.customer,
     totalPrice: state.cartReducer.totalPrice,
     showOrderPlacedModal: state.cartReducer.showOrderPlacedModal,
+    userID: state.authReducer.userID,
   };
 };
 const mapActionsToProps = (dispatch) => {
   return {
     formEdit: (data) => dispatch(actionTypes.formEdit(data)),
-    placeOrder: (products, customer, totalPrice) =>
-      dispatch(actionTypes.placeOrder(products, customer, totalPrice)),
+    placeOrder: (products, customer, totalPrice, userID) =>
+      dispatch(actionTypes.placeOrder(products, customer, totalPrice, userID)),
     closeOrderPlacedModal: () => dispatch(actionTypes.closeOrderPlacedModal()),
   };
 };

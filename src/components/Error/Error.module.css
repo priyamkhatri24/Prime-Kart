@@ -1,0 +1,16 @@
+.error {
+  height: 100vh;
+  padding: 30px;
+}
+.message {
+  padding: 100px auto;
+  margin: 0px auto;
+  font-weight: 100;
+  color: gray;
+  font-size: 40px;
+}
+.fourofour {
+  color: #2874f0;
+  font-size: 150px;
+  font-weight: 200;
+}
