@@ -1,4 +1,4 @@
-import { React, Component } from "react";
+import React, { Component } from "react";
 import classes from "./CheckoutProduct.module.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/Actions/Actions";
@@ -14,6 +14,8 @@ class CheckoutProduct extends Component {
     },
     varClass: classes.varClass,
   };
+
+  specsRef = React.createRef();
 
   colorPlatingSelectHandler = (color) => {
     const updatedSpecs = { ...this.state.specs };
@@ -43,7 +45,8 @@ class CheckoutProduct extends Component {
     if (updatedProduct.category === "jewelery") {
       if (!updatedProduct.specs.plating) {
         this.customizationAlert();
-        window.scroll({ top: 0, behavior: "smooth" });
+        this.specsRef.current.scrollIntoView({ behavior: "smooth" });
+
         return;
       }
     }
@@ -51,14 +54,16 @@ class CheckoutProduct extends Component {
       updatedProduct.category === "men's clothing" ||
       updatedProduct.category === "women's clothing"
     ) {
+      if (!updatedProduct.specs.size) {
+        this.customizationAlert();
+        this.specsRef.current.scrollIntoView({ behavior: "smooth" });
+
+        return;
+      }
       if (!updatedProduct.specs.color) {
         this.customizationAlert();
         window.scroll({ top: 0, behavior: "smooth" });
-        return;
-      }
-      if (!updatedProduct.specs.size) {
-        this.customizationAlert();
-        window.scroll({ top: 0, behavior: "smooth" });
+        this.specsRef.current.scrollIntoView({ behavior: "smooth" });
         return;
       }
     }
@@ -84,7 +89,7 @@ class CheckoutProduct extends Component {
     const crossedPriceAmount = product.price * 1.5 * 72;
     const productPrice = product.price * 72;
     const sizeBar = (
-      <div className={classes.sizeBar}>
+      <div ref={this.specsRef} className={classes.sizeBar}>
         <p className={this.state.varClass}>Size</p>
         {sizes.map((ele) => (
           <h5
@@ -107,7 +112,7 @@ class CheckoutProduct extends Component {
       </div>
     );
     const colorBar = (
-      <div className={classes.colorBar}>
+      <div className={classes.colorBar} ref={this.specsRef}>
         <p className={this.state.varClass}>Colour</p>
         {colors.map((ele) => (
           <div
@@ -136,7 +141,7 @@ class CheckoutProduct extends Component {
     );
     const platingBar = (
       <div>
-        <div className={classes.colorBar}>
+        <div ref={this.specsRef} className={classes.colorBar}>
           <p className={this.state.varClass}>Color plating</p>
           {platings.map((ele) => (
             <div
