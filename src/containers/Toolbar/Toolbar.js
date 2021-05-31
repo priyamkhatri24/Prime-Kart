@@ -23,59 +23,81 @@ class Toolbar extends Component {
 
   render() {
     return (
-      <div className={classes.toolbar}>
-        <NavLink to="/">
-          <h3 className={classes.logo}>PrimetheKart</h3>
-        </NavLink>
-        <span className={classes.search}>
-          <form className={classes.toolbarForm}>
-            <Input
-              changed={this.inputChangedHandler}
-              value={this.props.searchQuery}
-              type="text"
-              placeholder="Search for products"
-            />
-            <button onClick={this.querySubmitHandler}>
-              <ion-icon
-                className={classes.searchIcon}
-                name="search-outline"
-              ></ion-icon>
-            </button>
-          </form>
-        </span>
-        {!this.props.token ? (
-          <button
-            onClick={this.props.loginClicked}
-            className={classes.loginBtn}
-          >
-            Login
-          </button>
-        ) : (
-          <button
-            onClick={this.props.logoutClicked}
-            className={classes.loginBtn}
-          >
-            Logout
-          </button>
-        )}
-        {this.props.token ? (
-          <NavLink to={`/cart`}>
-            <button className={classes.cartBtn}>
-              <ion-icon name="cart"></ion-icon>Cart
-              {this.props.cart.length ? (
-                <span className={classes.cartLength}>
-                  {this.props.cart.length}
-                </span>
-              ) : null}
-            </button>
+      <>
+        <div className={classes.toolbar}>
+          <NavLink className={classes.logoContainer} to="/">
+            <h3 className={classes.logo}>PrimeKart</h3>
           </NavLink>
-        ) : null}
-        {this.props.token ? (
-          <NavLink to={`/my orders?token=${this.props.token}`}>
-            <button className={classes.cartBtn}>My Orders</button>
-          </NavLink>
-        ) : null}
-      </div>
+          <span className={classes.searchFullWidth}>
+            <form className={classes.toolbarForm}>
+              <Input
+                changed={this.inputChangedHandler}
+                value={this.props.searchQuery}
+                type="text"
+                placeholder="Search for products"
+              />
+              <button onClick={this.querySubmitHandler}>
+                <ion-icon
+                  className={classes.searchIcon}
+                  name="search-outline"
+                ></ion-icon>
+              </button>
+            </form>
+          </span>
+          {!this.props.token ? (
+            <button
+              onClick={this.props.loginClicked}
+              className={classes.loginBtn}
+            >
+              Login
+            </button>
+          ) : (
+            <button
+              onClick={this.props.logoutClicked}
+              className={classes.loginBtn}
+            >
+              Logout
+            </button>
+          )}
+          {this.props.token ? (
+            <NavLink to={`/cart`}>
+              <button className={classes.cartBtn}>
+                <ion-icon name="cart"></ion-icon>Cart
+                {this.props.cart.length ? (
+                  <span className={classes.cartLength}>
+                    {this.props.cart.length}
+                  </span>
+                ) : null}
+              </button>
+            </NavLink>
+          ) : null}
+          {this.props.token ? (
+            <NavLink to={`/my orders?token=${this.props.token}`}>
+              <button className={classes.cartBtn}>My Orders</button>
+            </NavLink>
+          ) : null}
+        </div>
+        <div className={[classes.toolbar, classes.mobileBar].join(" ")}>
+          <span className={classes.searchMobileWidth}>
+            <form
+              className={[classes.toolbarForm, classes.mobileBarForm].join(" ")}
+            >
+              <Input
+                changed={this.inputChangedHandler}
+                value={this.props.searchQuery}
+                type="text"
+                placeholder="Search for products"
+              />
+              <button onClick={this.querySubmitHandler}>
+                <ion-icon
+                  className={classes.searchIcon}
+                  name="search-outline"
+                ></ion-icon>
+              </button>
+            </form>
+          </span>
+        </div>
+      </>
     );
   }
 }

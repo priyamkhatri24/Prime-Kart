@@ -1,12 +1,13 @@
 .cart {
   background-color: rgba(230, 230, 230, 0.5);
   display: flex;
-  flex-flow: row;
   min-height: 90vh;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
 }
 .cartList {
   width: 65%;
-  margin-left: 50px;
 }
 
 .heading {
@@ -87,4 +88,35 @@
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+  .cart {
+    flex-flow: wrap;
+    justify-content: left;
+  }
+  .summary {
+    margin: auto;
+    width: 90%;
+  }
+  .cartList {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .placeOrder {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+  .placeOrder h3 {
+    border: 1px solid rgb(158, 158, 158);
+    width: 200px;
+    height: 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
 }

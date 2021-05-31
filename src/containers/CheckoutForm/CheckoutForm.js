@@ -112,7 +112,7 @@ class CheckoutForm extends Component {
         inputClass = [classes.formInput, classes.incorrect];
       }
       return (
-        <div key={formObject[ele].placeholder} style={{ display: "flex" }}>
+        <div key={formObject[ele].placeholder} className={classes.inputBox}>
           <input
             className={inputClass.join(" ")}
             type={formObject[ele].type}
@@ -121,7 +121,9 @@ class CheckoutForm extends Component {
             name={formObject[ele].name}
             onChange={this.formDataHandler}
           ></input>
-          {valid ? null : (
+          {valid ? (
+            <p className={classes.invalidFormData}></p>
+          ) : (
             <p className={classes.invalidFormData}>Invalid form data!</p>
           )}
         </div>

@@ -1,35 +1,53 @@
 .toolbar {
-  width: 100%;
+  width: auto;
   height: fit-content;
   background-color: #2874f0;
   display: flex;
-  justify-content: center;
+  padding: 0px 20px;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.55);
+}
+.logoContainer {
+  flex-grow: 2;
+  text-align: left;
 }
 .toolbar .logo {
   color: white;
   font-family: "Roboto", sans-serif;
-  margin: auto 30px;
   text-decoration: italic;
   font-size: 25px;
 }
-span {
+.searchFullWidth {
   display: flex;
   align-items: center;
 }
-.search ion-icon {
+.searchFullWidth ion-icon {
   color: #2874f0;
   background-color: white;
   height: 30px;
   padding: 5px 12px;
   margin: auto;
   margin-right: 30px;
+  margin-bottom: 3px;
   font-size: 20px;
   font-weight: bold;
 }
+.searchMobileWidth ion-icon {
+  color: #2874f0;
+  background-color: white;
+  height: 30px;
+  padding: 5px 12px;
+  margin: auto;
+  margin-bottom: 3px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.searchMobileWidth {
+  display: none;
+}
 .loginBtn {
-  margin: auto 15px;
+  margin: auto;
   cursor: pointer;
   background-color: white;
   color: #2874f0;
@@ -42,7 +60,6 @@ span {
   font-size: 16px;
 }
 .cartBtn {
-  margin: auto 15px;
   background-color: transparent;
   color: white;
   outline: none;
@@ -78,6 +95,11 @@ span {
   margin-top: 5px;
   cursor: pointer;
 }
+.mobileBarForm {
+  width: 100%;
+  text-align: center;
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -96,4 +118,39 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.mobileBar {
+  width: auto;
+  display: none;
+}
+.mobileBarForm {
+  width: 100%;
+}
+.mobileBarForm input {
+  width: 100%;
+}
+@media (max-width: 1080px) {
+  .searchMobileWidth {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .searchFullWidth {
+    display: none;
+  }
+  .logo {
+    margin: 0px;
+  }
+  .mobileBar {
+    display: flex;
+  }
+  .toolbar:first-child {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 650px) {
+  .cartBtn {
+    display: none;
+  }
 }

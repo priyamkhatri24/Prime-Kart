@@ -87,3 +87,17 @@
 .createAccount:hover {
   color: #00307e;
 }
+
+@media screen and (max-width: 950px) {
+  .leftSide {
+    display: none;
+  }
+  .rightSide {
+    width: 100%;
+  }
+  .login {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+}

@@ -88,3 +88,11 @@
   text-align: right;
   width: 50%;
 }
+
+@media screen and (max-width: 720px) {
+  .cartProduct {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+}

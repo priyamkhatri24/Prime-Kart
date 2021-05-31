@@ -17,15 +17,15 @@
   opacity: 0;
 }
 
-@media screen and (max-width: 590px) {
-  .modal {
-    width: 90%;
-    left: 15%;
-  }
-}
 @media screen and (max-width: 910px) {
   .modal {
-    width: 50%;
-    left: 25%;
+    width: 60%;
+    left: 20%;
+  }
+}
+@media (max-width: 500px) {
+  .modal {
+    width: 90%;
+    left: 5%;
   }
 }

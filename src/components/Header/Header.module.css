@@ -1,8 +1,8 @@
 .headerImg {
   width: 100%;
-  height: auto;
+  min-height: auto;
 }
 .header {
-  width: 100%;
+  width: auto;
   margin: 20px auto;
 }
