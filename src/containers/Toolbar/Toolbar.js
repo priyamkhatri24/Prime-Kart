@@ -10,6 +10,11 @@ class Toolbar extends Component {
     query: "",
   };
 
+  logoutClickedHandler = () => {
+    this.props.logoutClicked();
+    this.props.history.push("/");
+  };
+
   inputChangedHandler = (e) => {
     this.setState({ query: e.target.value });
     this.props.querySubmit(e.target.value);
@@ -25,6 +30,14 @@ class Toolbar extends Component {
     return (
       <>
         <div className={classes.toolbar}>
+          {this.props.token ? (
+            <div
+              onClick={this.props.openSideDrawerHandler}
+              className={classes.menuIcon}
+            >
+              <ion-icon name="menu"></ion-icon>
+            </div>
+          ) : null}
           <NavLink className={classes.logoContainer} to="/">
             <h3 className={classes.logo}>PrimeKart</h3>
           </NavLink>
@@ -53,7 +66,7 @@ class Toolbar extends Component {
             </button>
           ) : (
             <button
-              onClick={this.props.logoutClicked}
+              onClick={this.logoutClickedHandler}
               className={classes.loginBtn}
             >
               Logout
@@ -114,6 +127,7 @@ const mapActionsToProps = (dispatch) => {
   return {
     querySubmit: (query) => dispatch(actionTypes.querySubmit(query)),
     fetchCategories: (query) => dispatch(actionTypes.fetchByCategories(query)),
+    openSideDrawerHandler: () => dispatch(actionTypes.openSideDrawerHandler()),
   };
 };
 

@@ -1,0 +1,57 @@
+.sideDrawer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  width: 70%;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgb(255, 255, 255);
+  display: none;
+  transition: transform 0.3s;
+  transform: translateX(0%);
+}
+.hidden {
+  transform: translateX(-100%);
+}
+.topSection {
+  width: 100%;
+  height: 25%;
+  background-color: #2874f0;
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+}
+.topSection h2 {
+  margin-left: 15px;
+  color: white;
+}
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cartBtn {
+  background-color: transparent;
+  color: black;
+  margin-left: 20px;
+  margin-top: 10px;
+  outline: none;
+  border: transparent;
+  cursor: pointer;
+  height: 35px;
+  width: 120px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+@media screen and (max-width: 650px) {
+  .sideDrawer {
+    display: flex;
+  }
+}

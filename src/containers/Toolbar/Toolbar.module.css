@@ -33,6 +33,13 @@
   font-size: 20px;
   font-weight: bold;
 }
+.menuIcon {
+  color: white;
+  font-size: 25px;
+  padding: 5px;
+  padding-top: 12px;
+  display: none;
+}
 .searchMobileWidth ion-icon {
   color: #2874f0;
   background-color: white;
@@ -152,5 +159,8 @@ a {
 @media (max-width: 650px) {
   .cartBtn {
     display: none;
+  }
+  .menuIcon {
+    display: block;
   }
 }

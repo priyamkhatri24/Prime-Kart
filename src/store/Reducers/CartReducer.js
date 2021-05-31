@@ -19,6 +19,7 @@ const initialState = {
   totalPrice: 0,
   customer: null,
   myOrder: null,
+  showSideDrawer: false,
 };
 
 const loadProducts = (state, action) => {
@@ -150,6 +151,13 @@ const logoutHandler = (state) => {
   };
 };
 
+const openSideDrawerHandler = (state) => {
+  return {
+    ...state,
+    showSideDrawer: !state.showSideDrawer,
+  };
+};
+
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOAD_PRODUCTS:
@@ -183,6 +191,8 @@ export const cartReducer = (state = initialState, action) => {
       return fetchOrders(state, action);
     case actionTypes.LOGOUT_CLICKED:
       return logoutHandler(state);
+    case actionTypes.OPEN_SIDE_DRAWER:
+      return openSideDrawerHandler(state);
     default:
       return state;
   }

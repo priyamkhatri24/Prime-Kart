@@ -13,6 +13,7 @@ import Cart from "../Cart/Cart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import Error from "../../components/Error/Error";
 import MyOrders from "../MyOrders/MyOrders";
+import SideDrawer from "../../components/SideDrawer/SideDrawer";
 
 class Layout extends Component {
   cancelModalHandler = () => {
@@ -33,6 +34,7 @@ class Layout extends Component {
         >
           <Login />
         </Modal>
+        <SideDrawer />
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/product" component={CheckoutProduct} />

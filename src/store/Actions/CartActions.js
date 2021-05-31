@@ -13,6 +13,7 @@ export const FORM_EDIT = "FORM_EDIT";
 export const PLACE_ORDER = "PLACE_ORDER";
 export const CLOSE_ORDER_PLACED_MODAL = "CLOSE_ORDER_PLACED_MODAL";
 export const FETCH_ORDERS = "FETCH_ORDERS";
+export const OPEN_SIDE_DRAWER = "OPEN_SIDE_DRAWER";
 
 export const loadProducts = () => {
   return (dispatch) => {
@@ -111,6 +112,12 @@ export const placeOrder = (products, customer, totalPrice, userID) => {
 export const closeOrderPlacedModal = () => {
   return {
     type: CLOSE_ORDER_PLACED_MODAL,
+  };
+};
+
+export const openSideDrawerHandler = () => {
+  return {
+    type: OPEN_SIDE_DRAWER,
   };
 };
 
