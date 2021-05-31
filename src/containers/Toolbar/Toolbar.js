@@ -25,7 +25,7 @@ class Toolbar extends Component {
     return (
       <div className={classes.toolbar}>
         <NavLink to="/">
-          <h3 className={classes.logo}>PrimeKart</h3>
+          <h3 className={classes.logo}>PrimetheKart</h3>
         </NavLink>
         <span className={classes.search}>
           <form className={classes.toolbarForm}>
