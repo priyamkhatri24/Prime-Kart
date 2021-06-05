@@ -2,6 +2,7 @@ import classes from "./CartProduct.module.css";
 import React from "react";
 
 const cartProduct = (props) => {
+  console.log(props.product);
   const productPrice = props.product.price * 72 * props.product.specs.qty;
   return (
     <React.Fragment>
@@ -63,8 +64,10 @@ const cartProduct = (props) => {
         </div>
         <div className={classes.deliveryDate}>
           <p className={classes.delivery}>
-            {props.needPlusminus ? "Delivery by" : "Delivered on"}: Friday April
-            16th | Free
+            {props.needPlusminus ? "Delivery by" : "Delivered on"}:{" "}
+            {props.product.orderPlacedOn
+              ? props.product.orderPlacedOn
+              : "NEXT WEEK"}
           </p>
         </div>
       </div>

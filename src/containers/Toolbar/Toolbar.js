@@ -12,7 +12,7 @@ class Toolbar extends Component {
 
   logoutClickedHandler = () => {
     this.props.logoutClicked();
-    this.props.history.push("/");
+    this.props.history.replace("/");
   };
 
   inputChangedHandler = (e) => {

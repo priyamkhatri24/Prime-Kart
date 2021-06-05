@@ -180,7 +180,10 @@ class CheckoutProduct extends Component {
             >
               <ion-icon name="cart"></ion-icon>ADD TO CART
             </button>
-            <button className={flashBtn.join(" ")}>
+            <button
+              className={flashBtn.join(" ")}
+              onClick={() => alert("Try add to cart instead")}
+            >
               <ion-icon name="flash"></ion-icon>BUY NOW
             </button>
           </div>

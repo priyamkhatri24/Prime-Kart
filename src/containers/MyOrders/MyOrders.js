@@ -21,9 +21,13 @@ class MyOrders extends Component {
         orderList.push(val.products);
       }
     }
-    orders = orderList.flat().map((ele) => {
-      return <CartProduct product={ele} key={ele.id} />;
-    });
+
+    orders = orderList
+      .flat()
+      .reverse()
+      .map((ele, i) => {
+        return <CartProduct product={ele} key={ele.id} />;
+      });
     return (
       <div className={classes.cart}>
         <div className={classes.cartList}>

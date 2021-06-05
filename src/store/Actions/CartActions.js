@@ -43,7 +43,8 @@ export const querySubmit = (query) => {
 export const fetchByCategories = (query) => {
   return (dispatch) => {
     // dispatch({ type: SPINNER_INIT });
-    fetch(`https://fakestoreapi.com/products/category/${query}`)
+    const lowerCaseQuery = query.toLowerCase();
+    fetch(`https://fakestoreapi.com/products/category/${lowerCaseQuery}`)
       .then((res) => res.json())
       .then((data) => dispatch({ type: FETCH_BY_CATEGORIES, data: data }))
       .catch((err) => alert("something went wrong"));
@@ -91,6 +92,11 @@ export const formEdit = (data) => {
   };
 };
 export const placeOrder = (products, customer, totalPrice, userID) => {
+  const date = new Date();
+  console.log(products);
+  for (let keys of products) {
+    keys.orderPlacedOn = date.toLocaleString();
+  }
   const data = {
     products: products,
     customer: customer,

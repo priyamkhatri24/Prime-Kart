@@ -56,6 +56,7 @@ const loginSuccess = (state, action) => {
     token: action.response.data.idToken,
     error: null,
     message: "Welcome to Primekart",
+    showLoginModal: false,
   };
 };
 const loginFail = (state, action) => {
